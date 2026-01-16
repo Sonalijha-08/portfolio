@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sonali Jha — Fullstack Developer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo">Sonali Jha</div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <p class="hello">Hello, it's me</p>
+          <h1 class="name">Sonali Jha</h1>
+          <h2 class="title">Fullstack Developer</h2>
+          <p class="intro">
+            I build full-stack web apps using React / Next.js and Node.js.
+            Skilled in Python, MERN and C#.
+          </p>
+
+          <div class="socials">
+            <a href="#" aria-label="github">GitHub</a>
+            <a href="#" aria-label="linkedin">LinkedIn</a>
+            <a href="#" aria-label="email">Email</a>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">See Projects</a>
+            <a class="btn ghost" href="#" onclick="location.href='mailto:your.email@example.com'">Contact</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hexagon-glow">
+            <div class="hexagon">
+              <!-- put avatar.jpg in same folder or change src -->
+              <img src="avatar.jpg" alt="Sonali Jha" onerror="this.src='https://i.pinimg.com/736x/68/4c/b6/684cb636cf67568ed031a5fee627c8a5.jpg'"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <div class="hex-small">
+            <img src="avatar.jpg" alt="Sonali small" onerror="this.src='https://i.pinimg.com/736x/f0/70/e0/f070e0135f7742ea8f2a5d3c2fd465e7.jpg'"/>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>About Me</h3>
+          <p>
+            I'm a Fullstack Developer focusing on modern JavaScript frameworks and
+            server-side APIs. I enjoy building clean, maintainable code and delightful UI.
+          </p>
+          <ul class="skills">
+            <li>Python</li>
+            <li>MERN (MongoDB, Express, React, Node)</li>
+            <li>C#</li>
+            <li>React.js • Next.js</li>
+            <li>Express.js • Node.js</li>
+          </ul>
+          <a class="btn primary" href="#contact">Hire me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="container section-head">
+        <h3>Services</h3>
+        <p class="muted">What I can help you with</p>
+      </div>
+
+      <div class="container services-grid">
+        <div class="card service">
+          <div class="icon">💻</div>
+          <h4>Web Development</h4>
+          <p>React / Next.js frontends, responsive UI and modern CSS.</p>
+        </div>
+
+        <div class="card service">
+          <div class="icon">🔗</div>
+          <h4>API & Backend</h4>
+          <p>Node.js with Express, REST APIs, authentication and databases.</p>
+        </div>
+
+        <div class="card service">
+          <div class="icon">⚙️</div>
+          <h4>Fullstack Projects</h4>
+          <p>End-to-end projects: design, architecture, deployment and testing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+      <div class="container section-head">
+        <h3>Latest Projects</h3>
+        <p class="muted">Selected work — short descriptions below</p>
+      </div>
+
+      <div class="container projects-grid">
+        <article class="project-card">
+          <div class="thumb" style="background-image:linear-gradient(45deg, rgba(0,0,0,.5), rgba(0,0,0,.3)), url('https://i.pinimg.com/736x/25/99/2d/25992d4d75a552542b45b14efc6335fb.jpg');"></div>
+          <div class="proj-body">
+            <h4>Baby Care</h4>
+            <p class="muted">React.js • Node.js • Express.js — a baby care app with daily logs and feeding tracker.</p>
+            <div class="tags"><span>React</span><span>Node</span><span>Express</span></div>
+            <a class="btn ghost" href="#" onclick="alert('Project link not provided')">View</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="thumb" style="background-image:linear-gradient(45deg, rgba(0,0,0,.5), rgba(0,0,0,.3)), url('https://i.pinimg.com/736x/37/dd/57/37dd57a5a89e081f309764c72f421e62.jpg');"></div>
+          <div class="proj-body">
+            <h4>Skinn Care</h4>
+            <p class="muted">Next.js • Node.js — skincare e-commerce / info site with SSR and API integrations.</p>
+            <div class="tags"><span>Next.js</span><span>Node</span></div>
+            <a class="btn ghost" href="#" onclick="alert('Project link not provided')">View</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container section-head">
+        <h3>Contact Me</h3>
+        <p class="muted">Let's build something together — or just say hi.</p>
+      </div>
+
+      <div class="container contact-grid">
+        <div class="contact-info card">
+          <h4>Get in touch</h4>
+          <p>Email: <a href="mailto:your.email@example.com">jhasonali208@gmail.com</a></p>
+          <p>Location: India</p>
+          <p>Available for freelance & full-time.</p>
+        </div>
+
+        <form class="contact-form card" onsubmit="submitContact(event)">
+          <label>
+            <span>Full name</span>
+            <input type="text" id="name" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input type="email" id="email" required />
+          </label>
+
+          <label>
+            <span>Message</span>
+            <textarea id="message" rows="5" required></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Sonali Jha — Fullstack Developer</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
