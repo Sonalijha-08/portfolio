@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sonali Jha — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <div class="top-inner">
+      <div class="logo">Sonali<span>.</span></div>
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="hire-btn" href="index.html#contact">Hire Me</a>
+    </div>
+  </header>
+
+  <section class="about" style="padding: 80px 0;">
+    <div class="wrapper">
+      <div class="section-head">
+        <div class="section-eyebrow center">Resume</div>
+        <h2 class="section-title center">Professional Summary</h2>
+      </div>
+
+      <div class="about-content" style="max-width: 900px; margin: 0 auto;">
+        <p class="about-para center">Fullstack developer with experience building modern web applications using React, Next.js, Node.js, and Python. Skilled in creating polished UI, scalable backend systems, and user-focused digital products.</p>
+
+        <div class="about-traits" style="margin-top: 32px; display: grid; gap: 16px;">
+          <div class="trait"><span class="trait-dot"></span>Fullstack architecture and implementation</div>
+          <div class="trait"><span class="trait-dot"></span>Responsive UI with React and Tailwind</div>
+          <div class="trait"><span class="trait-dot"></span>REST APIs, server-side rendering, and deployment</div>
+          <div class="trait"><span class="trait-dot"></span>Product-focused design and user experience</div>
+          <div class="trait"><span class="trait-dot"></span>Strong collaboration for Agile delivery</div>
+        </div>
+
+        <div class="resume-section" style="margin-top: 48px;">
+          <h3>Experience</h3>
+          <div class="resume-item">
+            <strong>Fullstack Developer</strong> — Freelance / Contract
+            <p>Delivered end-to-end web applications with React, Next.js, Node.js, and MongoDB. Built responsive frontends, REST APIs, and integrated payment flows.</p>
+          </div>
+          <div class="resume-item">
+            <strong>Web Developer</strong> — Personal Portfolio Projects
+            <p>Created portfolio projects focused on performance, accessibility, and polished UI, including ecommerce, management dashboards, and landing experiences.</p>
+          </div>
+        </div>
+
+        <div class="resume-section" style="margin-top: 32px;">
+          <h3>Skills</h3>
+          <ul style="list-style: none; padding: 0; columns: 2; gap: 16px;">
+            <li>React.js</li>
+            <li>Next.js</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>MongoDB</li>
+            <li>PostgreSQL</li>
+            <li>JavaScript</li>
+            <li>HTML5 & CSS3</li>
+            <li>Git / GitHub</li>
+            <li>Figma</li>
+          </ul>
+        </div>
+
+        <div class="resume-section" style="margin-top: 32px;">
+          <h3>Contact</h3>
+          <p>Email: <a href="mailto:jhasonali208@gmail.com">jhasonali208@gmail.com</a></p>
+          <p>Location: India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" style="padding: 40px 0;">
+    <div class="footer-inner wrapper">
+      <div class="footer-logo">Sonali<span>.</span></div>
+      <p class="footer-copy">© <span id="yr"></span> Sonali Jha — Fullstack Developer.</p>
+      <div class="footer-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr')?.textContent = new Date().getFullYear();</script>
+</body>
+</html>
