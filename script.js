@@ -23,7 +23,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   const ctx = canvas.getContext('2d');
 
   let W, H, particles = [], mouse = { x: -999, y: -999 };
-  const COUNT = 90;
+  const COUNT = 20;
   const GOLD   = 'rgba(201,168,76,';
   const SILVER = 'rgba(168,184,204,';
 
@@ -46,8 +46,8 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     reset(init) {
       this.x    = Math.random() * W;
       this.y    = init ? Math.random() * H : H + 10;
-      this.vy   = -(Math.random() * 0.35 + 0.1);
-      this.vx   = (Math.random() - .5) * 0.15;
+      this.vy   = -(Math.random() * 0.15 + 0.05);
+      this.vx   = (Math.random() - .5) * 0.08;
       this.size = Math.random() * 1.8 + 0.4;
       this.alpha= Math.random() * 0.5 + 0.1;
       this.gold = Math.random() < 0.3;
@@ -55,15 +55,6 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     update() {
       this.x += this.vx;
       this.y += this.vy;
-      // mouse repulsion
-      const dx = this.x - mouse.x;
-      const dy = this.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 90) {
-        const force = (90 - dist) / 90 * 0.6;
-        this.x += (dx / dist) * force;
-        this.y += (dy / dist) * force;
-      }
       if (this.y < -10) this.reset(false);
     }
     draw() {
@@ -85,12 +76,12 @@ document.getElementById('yr').textContent = new Date().getFullYear();
         const dx = a.x - b.x, dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 100) {
-          const op = (1 - dist / 100) * 0.08;
+          const op = (1 - dist / 100) * 0.02;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
           ctx.strokeStyle = GOLD + op + ')';
-          ctx.lineWidth = 0.6;
+          ctx.lineWidth = 0.4;
           ctx.stroke();
         }
       }
@@ -244,7 +235,38 @@ document.querySelectorAll('.srv-card').forEach(card => {
 /* ═══════════════════════════════════════════════════════
    CONTACT FORM
 ═══════════════════════════════════════════════════════ */
-// Form now uses Formspree for direct email submission
+(function initContactForm() {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    /* Submit to Formspree */
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        /* Redirect to thank you page after successful submission */
+        setTimeout(() => {
+          window.location.href = 'thank-you.html';
+        }, 500);
+      } else {
+        alert('There was an issue submitting your message. Please try again.');
+      }
+    })
+    .catch(error => {
+      console.error('Form submission error:', error);
+      alert('There was an error submitting your message. Please try again.');
+    });
+  });
+})();
 
 /* ═══════════════════════════════════════════════════════
    HERO HEADING PARALLAX  (subtle depth on scroll)

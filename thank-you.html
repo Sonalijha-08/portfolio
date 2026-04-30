@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank You — Sonali Jha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <!-- Topbar -->
+  <header class="topbar" id="topbar">
+    <div class="top-inner">
+      <div class="logo">Sonali<span>.</span></div>
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="hire-btn" href="index.html#contact">Hire Me</a>
+    </div>
+  </header>
+
+  <!-- ═══ THANK YOU SECTION ═══ -->
+  <section id="thank-you" class="thank-you">
+    <div class="thank-you-canvas">
+      <canvas id="particleCanvasTY"></canvas>
+    </div>
+    
+    <div class="thank-you-inner">
+      <div class="thank-you-content">
+        
+        <!-- Success Icon -->
+        <div class="ty-icon-container">
+          <div class="ty-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Main Message -->
+        <div class="ty-message reveal">
+          <h1 class="ty-title">Message Received!</h1>
+          <p class="ty-subtitle">Thank you for reaching out. I appreciate you taking the time to connect.</p>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="ty-info reveal delay-1">
+          <p class="ty-text">I'll review your message and get back to you as soon as possible, typically within 24-48 hours.</p>
+          <p class="ty-text">In the meantime, feel free to explore my portfolio or check out my latest projects.</p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="ty-ctas reveal delay-2">
+          <a class="btn-gold" href="index.html#projects">
+            <span>View My Work</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn-ghost" href="index.html">
+            <span>Back to Home</span>
+          </a>
+        </div>
+
+        <!-- Footer Message -->
+        <div class="ty-footer-msg reveal delay-3">
+          <p>If you have any urgent matters, you can also reach me at <a href="mailto:jhasonali208@gmail.com" class="ty-email-link">jhasonali208@gmail.com</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner wrapper">
+      <div class="footer-logo">Sonali<span>.</span></div>
+      <p class="footer-copy">© <span id="yr"></span> Sonali Jha — Fullstack Developer. Crafted with care.</p>
+      <div class="footer-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize particle canvas for thank-you page
+    (function initParticlesTY() {
+      const canvas = document.getElementById('particleCanvasTY');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let W, H, particles = [], mouse = { x: -999, y: -999 };
+      const COUNT = 20;
+      const GOLD   = 'rgba(201,168,76,';
+      const SILVER = 'rgba(168,184,204,';
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      canvas.addEventListener('mousemove', e => {
+        const r = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      });
+      canvas.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
+      class Particle {
+        constructor() { this.reset(true); }
+        reset(init) {
+          this.x    = Math.random() * W;
+          this.y    = init ? Math.random() * H : H + 10;
+          this.vy   = -(Math.random() * 0.15 + 0.05);
+          this.vx   = (Math.random() - .5) * 0.08;
+          this.size = Math.random() * 1.8 + 0.4;
+          this.alpha= Math.random() * 0.5 + 0.1;
+          this.gold = Math.random() < 0.3;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.y < -10) this.reset(false);
+        }
+        draw() {
+          const col = this.gold ? GOLD : SILVER;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = col + this.alpha + ')';
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+      function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const a = particles[i], b = particles[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+              const op = (1 - dist / 100) * 0.02;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = GOLD + op + ')';
+              ctx.lineWidth = 0.4;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, W, H);
+        drawLines();
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+</body>
+</html>
