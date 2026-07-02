@@ -598,10 +598,30 @@
       pointer-events: none;
       z-index: 2;
     }
-    .about-decor-corner.tl { top: 15px; left: 15px; border-width: 1px 0 0 1px; }
-    .about-decor-corner.tr { top: 15px; right: 15px; border-width: 1px 1px 0 0; }
-    .about-decor-corner.bl { bottom: 15px; left: 15px; border-width: 0 0 1px 1px; }
-    .about-decor-corner.br { bottom: 15px; right: 15px; border-width: 0 1px 1px 0; }
+
+    .about-decor-corner.tl {
+      top: 15px;
+      left: 15px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .about-decor-corner.tr {
+      top: 15px;
+      right: 15px;
+      border-width: 1px 1px 0 0;
+    }
+
+    .about-decor-corner.bl {
+      bottom: 15px;
+      left: 15px;
+      border-width: 0 0 1px 1px;
+    }
+
+    .about-decor-corner.br {
+      bottom: 15px;
+      right: 15px;
+      border-width: 0 1px 1px 0;
+    }
 
     .about-decor-tech-label {
       position: absolute;
@@ -650,7 +670,7 @@
       justify-content: center;
       text-align: center;
       z-index: 2;
-      box-shadow: 0 15px 35px rgba(255, 0, 110, 0.08), 0 5px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 35px rgba(255, 0, 110, 0.08), 0 5px 15px rgba(0, 0, 0, 0.5);
       padding: 10px;
     }
 
@@ -669,6 +689,7 @@
       margin-top: 4px;
       line-height: 1.3;
     }
+
     .about-para {
       font-size: 16px;
       line-height: 1.9;
@@ -1032,6 +1053,7 @@
       gap: 24px;
       margin-bottom: 28px;
     }
+
     .pm-val {
       font-family: var(--font-display);
       font-size: 28px;
@@ -1216,6 +1238,7 @@
       gap: 80px;
       align-items: start;
     }
+
     .contact-big {
       font-family: var(--font-display);
       font-size: clamp(60px, 8vw, 120px);
@@ -1474,15 +1497,41 @@
         gap: 12px;
       }
 
-      .skill-card:nth-child(1) { margin-top: 0; }
-      .skill-card:nth-child(2) { margin-top: 0; }
-      .skill-card:nth-child(3) { margin-top: 0; }
-      .skill-card:nth-child(4) { margin-top: 0; }
-      .skill-card:nth-child(5) { margin-top: 0; }
-      .skill-card:nth-child(6) { margin-top: 0; }
-      .skill-card:nth-child(7) { margin-top: 0; }
-      .skill-card:nth-child(8) { margin-top: 0; }
-      .skill-card:nth-child(9) { margin-top: 0; }
+      .skill-card:nth-child(1) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(3) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(4) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(5) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(6) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(7) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(8) {
+        margin-top: 0;
+      }
+
+      .skill-card:nth-child(9) {
+        margin-top: 0;
+      }
 
       .nav-toggle {
         display: flex;
@@ -1638,10 +1687,30 @@
       pointer-events: none;
       z-index: 2;
     }
-    .modal-card-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
-    .modal-card-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
-    .modal-card-corner.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
-    .modal-card-corner.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+    .modal-card-corner.tl {
+      top: 12px;
+      left: 12px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .modal-card-corner.tr {
+      top: 12px;
+      right: 12px;
+      border-width: 1px 1px 0 0;
+    }
+
+    .modal-card-corner.bl {
+      bottom: 12px;
+      left: 12px;
+      border-width: 0 0 1px 1px;
+    }
+
+    .modal-card-corner.br {
+      bottom: 12px;
+      right: 12px;
+      border-width: 0 1px 1px 0;
+    }
 
     .modal-overlay.open .modal-card {
       transform: scale(1) translateY(0);
@@ -1727,6 +1796,10 @@
       box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
       transform: translateY(-2px);
     }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
   </style>
 </head>
 
@@ -1772,7 +1845,9 @@
       </h1>
       <div class="hero-sub">
         <p class="hero-desc">
-          <strong>Full Stack Developer (MERN)</strong> specializing in building high-performance web applications with React, Next.js, and Node.js. Dedicated to crafting fluid, responsive interfaces, implementing robust server side architectures, and delivering seamless user-centered digital products that scale.
+          <strong>Full Stack Developer (MERN)</strong> specializing in building high-performance web applications with
+          React, Next.js, and Node.js. Dedicated to crafting fluid, responsive interfaces, implementing robust server
+          side architectures, and delivering seamless user-centered digital products that scale.
         </p>
       </div>
     </div>
@@ -1952,9 +2027,11 @@
         <h3 class="career-title">Web Developer</h3>
         <div class="career-sub">inAmigos · Internship · Mumbai</div>
         <ul class="career-points">
-          <li>Developed and maintained frontend web components using HTML, CSS, and JavaScript in a collaborative team environment.</li>
+          <li>Developed and maintained frontend web components using HTML, CSS, and JavaScript in a collaborative team
+            environment.</li>
           <li>Built and tested responsive UI layouts ensuring cross-browser compatibility and mobile-first design.</li>
-          <li>Applied AI-assisted coding workflows (GitHub Copilot) to accelerate component scaffolding and reduce boilerplate.</li>
+          <li>Applied AI-assisted coding workflows (GitHub Copilot) to accelerate component scaffolding and reduce
+            boilerplate.</li>
           <li>Participated in code review cycles, version control (Git), and client-facing deliverable timelines.</li>
         </ul>
       </div>
@@ -2115,7 +2192,9 @@
             <span class="proj-tag">MongoDB</span>
           </div>
           <h3 class="proj-title">AiAudit</h3>
-          <p class="proj-desc">Developed an AI-powered audit platform using React.js, Node.js, Express.js, and MongoDB. The application provides AI-assisted data analysis, secure authentication, responsive dashboards, and efficient API-driven data management to streamline auditing processes.</p>
+          <p class="proj-desc">Developed an AI-powered audit platform using React.js, Node.js, Express.js, and MongoDB.
+            The application provides AI-assisted data analysis, secure authentication, responsive dashboards, and
+            efficient API-driven data management to streamline auditing processes.</p>
           <div class="proj-metrics">
             <div class="proj-metric">
               <div class="pm-val">AI</div>
@@ -2479,7 +2558,7 @@
     /* ═══ CONTACT MODAL LOGIC ═══ */
     const thankYouModal = document.getElementById('thank-you-modal');
     const closeBtns = document.querySelectorAll('#modal-close-btn, #modal-close-action-btn');
-    
+
     function showModal() {
       if (thankYouModal) {
         thankYouModal.classList.add('open');
@@ -2551,12 +2630,14 @@
       <div class="modal-card-corner br"></div>
       <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
       <div class="modal-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
       <h3 class="modal-title">Message Sent!</h3>
-      <p class="modal-message">Thank you for reaching out, your message has been received. I will email you back within 24 hours.</p>
+      <p class="modal-message">Thank you for reaching out, your message has been received. I will email you back within
+        24 hours.</p>
       <button class="btn-modal-close" id="modal-close-action-btn">Back to Portfolio</button>
     </div>
   </div>
