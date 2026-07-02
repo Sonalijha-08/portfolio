@@ -1,28 +1,421 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You — Sonali Jha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ─── RESET & TOKENS ─── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #030508;
+      --bg2: #060a10;
+      --bg3: #0a1020;
+      --accent: #ff006e;
+      --accent-rgb: 255, 0, 110;
+      --accent2: #7b61ff;
+      --accent2-rgb: 123, 97, 255;
+      --text: #e8ecf5;
+      --dim: #6b7a9a;
+      --border: rgba(255, 0, 110, 0.12);
+      --font-display: 'Bebas Neue', cursive;
+      --font-serif: 'DM Serif Display', serif;
+      --font-body: 'Space Grotesk', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ─── TOPBAR NAVBAR ─── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      height: 76px;
+      border-bottom: 1px solid rgba(255, 0, 110, 0.05);
+      background: rgba(3, 5, 8, 0.85);
+      backdrop-filter: blur(20px);
+    }
+
+    .top-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .logo::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dim);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .hire-btn {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    .hire-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+    }
+
+    /* ─── BACKGROUND CANVAS ─── */
+    .thank-you-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #particleCanvasTY {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ─── THANK YOU BODY ─── */
+    .thank-you-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 6vw 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .thank-you-content {
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 60px 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 0, 110, 0.05);
+      position: relative;
+    }
+
+    .ty-icon-container {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 0, 110, 0.08);
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      box-shadow: 0 0 25px rgba(255, 0, 110, 0.15);
+      animation: scaleUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .ty-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .ty-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 16px;
+      background: linear-gradient(120deg, var(--text) 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    .ty-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    .ty-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--dim);
+      margin-bottom: 16px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    .ty-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: #e0005a;
+      box-shadow: 0 0 25px rgba(255, 0, 110, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(255, 0, 110, 0.05);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .ty-footer-msg {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--dim);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+
+    .ty-email-link {
+      color: var(--accent);
+      font-weight: 500;
+      transition: text-decoration 0.2s;
+    }
+
+    .ty-email-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(255, 0, 110, 0.05);
+      padding: 40px 6vw;
+      background: var(--bg2);
+      z-index: 2;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--dim);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes scaleUp {
+      from {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-inner {
+        padding: 0 5vw;
+      }
+      .nav, .hire-btn {
+        display: none;
+      }
+      .thank-you-container {
+        padding-top: 100px;
+      }
+      .thank-you-content {
+        padding: 40px 24px;
+        border-radius: 24px;
+      }
+      .ty-ctas {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .btn-gold, .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-outline" id="cursorOutline"></div>
+  <!-- Background Lines / Particles -->
+  <div class="thank-you-canvas">
+    <canvas id="particleCanvasTY"></canvas>
+  </div>
 
   <!-- Topbar -->
-  <header class="topbar" id="topbar">
+  <header class="topbar">
     <div class="top-inner">
-      <div class="logo">Sonali<span>.</span></div>
+      <div class="logo">SONALI JHA</div>
       <nav class="nav">
-        <a href="index.html#home">Home</a>
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="index.html#services">Services</a>
+        <a href="index.html#experience">Experience</a>
         <a href="index.html#projects">Projects</a>
         <a href="index.html#contact">Contact</a>
       </nav>
@@ -30,137 +423,129 @@
     </div>
   </header>
 
-  <!-- ═══ THANK YOU SECTION ═══ -->
-  <section id="thank-you" class="thank-you">
-    <div class="thank-you-canvas">
-      <canvas id="particleCanvasTY"></canvas>
-    </div>
-    
-    <div class="thank-you-inner">
-      <div class="thank-you-content">
-        
-        <!-- Success Icon -->
-        <div class="ty-icon-container">
-          <div class="ty-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
+  <!-- Thank You Container -->
+  <main class="thank-you-container">
+    <div class="thank-you-content">
+      
+      <!-- Success Icon -->
+      <div class="ty-icon-container">
+        <div class="ty-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
-
-        <!-- Main Message -->
-        <div class="ty-message reveal">
-          <h1 class="ty-title">Message Received!</h1>
-          <p class="ty-subtitle">Thank you for reaching out. I appreciate you taking the time to connect.</p>
-        </div>
-
-        <!-- Additional Info -->
-        <div class="ty-info reveal delay-1">
-          <p class="ty-text">I'll review your message and get back to you as soon as possible, typically within 24-48 hours.</p>
-          <p class="ty-text">In the meantime, feel free to explore my portfolio or check out my latest projects.</p>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="ty-ctas reveal delay-2">
-          <a class="btn-gold" href="index.html#projects">
-            <span>View My Work</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn-ghost" href="index.html">
-            <span>Back to Home</span>
-          </a>
-        </div>
-
-        <!-- Footer Message -->
-        <div class="ty-footer-msg reveal delay-3">
-          <p>If you have any urgent matters, you can also reach me at <a href="mailto:jhasonali208@gmail.com" class="ty-email-link">jhasonali208@gmail.com</a></p>
-        </div>
-
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner wrapper">
-      <div class="footer-logo">Sonali<span>.</span></div>
-      <p class="footer-copy">© <span id="yr"></span> Sonali Jha — Fullstack Developer. Crafted with care.</p>
+      <!-- Message -->
+      <h1 class="ty-title">Message Sent!</h1>
+      <p class="ty-subtitle">Thank you for reaching out. I'll get back to you shortly.</p>
+      
+      <p class="ty-text">I've received your submission and will read it soon. You can normally expect a reply via email within 24 hours.</p>
+
+      <!-- CTAs -->
+      <div class="ty-ctas">
+        <a class="btn-gold" href="index.html#projects">
+          <span>View My Work</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn-ghost" href="index.html">
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Additional contact info -->
+      <div class="ty-footer-msg">
+        <p>Or send a line directly to <a href="mailto:jhasonali208@gmail.com" class="ty-email-link">jhasonali208@gmail.com</a></p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">SONALI JHA</div>
+      <p class="footer-copy">© <span id="yr"></span> Sonali Jha — Full Stack Developer</p>
       <div class="footer-links">
-        <a href="index.html#home">Home</a>
         <a href="index.html#about">About</a>
-        <a href="index.html#projects">Projects</a>
+        <a href="index.html#projects">Work</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
   <script>
-    // Initialize particle canvas for thank-you page
-    (function initParticlesTY() {
+    // Set Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Responsive Canvas Particles (Pink/Purple)
+    (function () {
       const canvas = document.getElementById('particleCanvasTY');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      let W, H, particles = [], mouse = { x: -999, y: -999 };
-      const COUNT = 20;
-      const GOLD   = 'rgba(201,168,76,';
-      const SILVER = 'rgba(168,184,204,';
+      let W, H, particles = [];
+      const COUNT = 35;
+
+      const PINK = 'rgba(255, 0, 110, ';
+      const PURPLE = 'rgba(123, 97, 255, ';
 
       function resize() {
-        W = canvas.width  = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
       }
       resize();
       window.addEventListener('resize', resize);
 
-      canvas.addEventListener('mousemove', e => {
-        const r = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - r.left;
-        mouse.y = e.clientY - r.top;
-      });
-      canvas.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
-
       class Particle {
-        constructor() { this.reset(true); }
+        constructor() {
+          this.reset(true);
+        }
         reset(init) {
-          this.x    = Math.random() * W;
-          this.y    = init ? Math.random() * H : H + 10;
-          this.vy   = -(Math.random() * 0.15 + 0.05);
-          this.vx   = (Math.random() - .5) * 0.08;
-          this.size = Math.random() * 1.8 + 0.4;
-          this.alpha= Math.random() * 0.5 + 0.1;
-          this.gold = Math.random() < 0.3;
+          this.x = Math.random() * W;
+          this.y = init ? Math.random() * H : H + 10;
+          this.vy = -(Math.random() * 0.4 + 0.15);
+          this.vx = (Math.random() - 0.5) * 0.25;
+          this.size = Math.random() * 2 + 0.5;
+          this.alpha = Math.random() * 0.4 + 0.1;
+          this.color = Math.random() < 0.5 ? PINK : PURPLE;
         }
         update() {
           this.x += this.vx;
           this.y += this.vy;
-          if (this.y < -10) this.reset(false);
+          if (this.y < -10 || this.x < -10 || this.x > W + 10) {
+            this.reset(false);
+          }
         }
         draw() {
-          const col = this.gold ? GOLD : SILVER;
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = col + this.alpha + ')';
+          ctx.fillStyle = this.color + this.alpha + ')';
           ctx.fill();
         }
       }
 
-      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+      for (let i = 0; i < COUNT; i++) {
+        particles.push(new Particle());
+      }
 
       function drawLines() {
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
-            const a = particles[i], b = particles[j];
-            const dx = a.x - b.x, dy = a.y - b.y;
+            const p1 = particles[i];
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 100) {
-              const op = (1 - dist / 100) * 0.02;
+            if (dist < 120) {
+              const op = (1 - dist / 120) * 0.05;
               ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = GOLD + op + ')';
-              ctx.lineWidth = 0.4;
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(255, 0, 110, ${op})`;
+              ctx.lineWidth = 0.5;
               ctx.stroke();
             }
           }
@@ -170,7 +555,10 @@
       function animate() {
         ctx.clearRect(0, 0, W, H);
         drawLines();
-        particles.forEach(p => { p.update(); p.draw(); });
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
         requestAnimationFrame(animate);
       }
       animate();
